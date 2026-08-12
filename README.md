@@ -316,3 +316,4 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 ---
 
 *Implementation cross-verified against the source paper PDF. All architecture details, hyperparameters, and results match the paper's Sections 3.1–3.5 and Tables 1–8.*
+# QC-CNN-Parallel
