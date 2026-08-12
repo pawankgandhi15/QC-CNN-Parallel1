@@ -1,0 +1,9 @@
+{
+  "model": "classical_cnn",
+  "dataset": "mnist",
+  "best_test_acc": 0.9745,
+  "final_test_acc": 0.9745,
+  "final_test_f1": 0.9745143654689332,
+  "final_test_loss": 0.1837183980113551,
+  "total_train_time_s": 128.02106547355652
+}

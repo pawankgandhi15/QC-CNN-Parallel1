@@ -1,0 +1,15 @@
+# Requirements for QC-CNN-Parallel implementation
+# Paper: "A Parallel Hybrid Quantum-Classical Convolutional Design Using
+#         Parameterized Quantum Circuits for Image Classification"
+#         Quantum Engineering (2026), article 6643049.
+#
+# Tested with:
+#   pennylane==0.42.3, torch==2.11.0, numpy==2.2.6,
+#   scikit-learn==1.7.2, matplotlib==3.10.8, torchvision==0.26.0
+
+pennylane>=0.38.0
+torch>=2.0.0
+torchvision>=0.15.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+matplotlib>=3.7.0
