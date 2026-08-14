@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.Python
+
+# PyTorch checkpoints
+*.pth
+*.pt
+*.ckpt
+
+# Datasets / downloads
+data/
+datasets/raw/
+*.zip
+*.tar.gz
+*.tar
+*.gz
+
+# Generated experiment outputs (keep code, ignore large results)
+results/**/*.png
+results/**/*.csv
+results/**/*.json
+results/**/*.npy
+!results/.gitkeep
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE configs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
