@@ -258,6 +258,12 @@ Trains and evaluates the proposed QC-CNN-Parallel model against 6 baselines (CNN
 ### Experiment 3: Noise Robustness
 Simulates 4 noise channels (data noise, bit-flip, phase-flip, depolarizing) at 3 error rates (0.1, 0.2, 0.3) using PennyLane's `default.mixed` simulator.
 
+### Experiment 4: Ablation Study (Quantum vs Classical Contribution)
+Systematic isolation of quantum and classical branches across 4 model variants (Full Hybrid, Classical-Only, Quantum-Only, Classical-Extended) on MNIST and Fashion-MNIST to quantify the exact quantum feature expressivity uplift.
+
+### Experiment 5: Scalability & Barren Plateau Study
+Parametric sweeps over qubit counts ($N \in \{2, 4, 6, 8\}$) and circuit depths ($L \in \{1, 2, 3, 4, 5\}$) measuring accuracy scaling, gradient variance decay, and trainability dynamics.
+
 ---
 
 ## 📚 Documentation
@@ -270,6 +276,7 @@ Simulates 4 noise channels (data noise, bit-flip, phase-flip, depolarizing) at 3
 | [EXPERIMENT_SETUP.md](EXPERIMENT_SETUP.md) | Exact experimental configurations for reproducibility |
 | [RESULTS.md](RESULTS.md) | Paper-reported results + reproduction tracking template |
 | [IMPROVEMENT.md](IMPROVEMENT.md) | Identified improvements and future work |
+| [CHAT_SUMMARY.md](CHAT_SUMMARY.md) | Architectural expansion, ablation, and scalability design report |
 
 ---
 
@@ -316,6 +323,3 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 ---
 
 *Implementation cross-verified against the source paper PDF. All architecture details, hyperparameters, and results match the paper's Sections 3.1–3.5 and Tables 1–8.*
-# QC-CNN-Parallel
-# QC-CNN-Parallel1
-# QC-CNN-Parallel1
