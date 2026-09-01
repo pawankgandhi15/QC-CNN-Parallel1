@@ -1133,6 +1133,30 @@ for b in range(B):           # 32 images per batch
 
 ### The Full Time Math
 
+#### Experiment 1 — Why it's the slowest
+
+| Step | Cost per circuit | 11 circuits | Total |
+|---|---|---|---|
+| **Expressibility metric** | 5,000 × 2 circuit runs = 10,000 runs | ×11 | 110,000 circuit runs |
+| **Entanglement metric** | 5,000 circuit runs | ×11 | 55,000 circuit runs |
+| **Discreteness metric** | 5,000 × 2 × 4 params = 40,000 runs | ×11 | 440,000 circuit runs |
+| **Classification (MNIST)** | 50 epochs × 313 batches × 6,272 runs/batch | ×11 | **~108 million runs** |
+| **Classification (Fashion)** | same | ×11 | **~108 million runs** |
+
+> 💀 **Experiment 1 alone = ~216 million+ quantum circuit calls, all sequential on CPU**
+
+#### Experiment 2 — Per model per dataset
+
+| Step | Circuit calls |
+|---|---|
+| 1 epoch × MNIST | 313 batches × 6,272 = ~2M calls |
+| 50 epochs × MNIST | ~100M calls |
+| 2 models × 3 datasets | **~600M calls total** |
+
+#### Experiment 3 — The `default.mixed` penalty
+
+`default.mixed` uses **density matrix simulation** = tracks a `2^4 × 2^4 = 16×16` complex matrix instead of a 16-element state vector. It is **~4× slower** than `default.qubit`. Plus, no batching = every image is processed one by one.
+
 | Bottleneck | Cause | Impact |
 |---|---|---|
 | **Triple nested loop** | 6,272 sequential QNode calls per batch | 80% of total time |
@@ -1186,14 +1210,23 @@ python experiments/experiment2_classification.py --dataset mnist
 
 ## E. Dataset Sizes — All Experiments
 
-### Full Original Dataset vs Paper Usage
+### Full Original Dataset Size
 
-| Dataset | Original Train | Original Test | Original Total | **Paper Uses** |
-|---|---|---|---|---|
-| **MNIST** | 60,000 | 10,000 | **70,000** | 10,000 train / 2,000 test |
-| **Fashion-MNIST** | 60,000 | 10,000 | **70,000** | 10,000 train / 2,000 test |
-| **Overhead-MNIST** | 8,519 | 1,065 | **9,584** | 8,519 train / 1,065 test (full) |
-| | | | **149,584** | **33,584 total used** |
+| Dataset | Train Images | Test Images | **Total** |
+|---|---|---|---|
+| **MNIST** | 60,000 | 10,000 | **70,000** |
+| **Fashion-MNIST** | 60,000 | 10,000 | **70,000** |
+| **Overhead-MNIST** | 8,519 | 1,065 | **9,584** |
+| | | **Grand Total** | **149,584** |
+
+### What the Paper Actually Uses (Subsampled)
+
+| Dataset | Train Used | Test Used | **Total Used** |
+|---|---|---|---|
+| **MNIST** | 10,000 | 2,000 | **12,000** |
+| **Fashion-MNIST** | 10,000 | 2,000 | **12,000** |
+| **Overhead-MNIST** | 8,519 | 1,065 | **9,584** |
+| | | **Grand Total** | **33,584** |
 
 ### Per Experiment — Exact Images Used
 
